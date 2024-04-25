@@ -1,0 +1,51 @@
+#Mars Photo Viewer
+#The following code will return photos from Mars taken from NASAs Curiosity, Opportunity, and Spirit rovers
+
+#Visit this page for the API calls from NASA. Browse APIs, then select Mars Rover Photos
+#https://api.nasa.gov/
+
+#in the space below, create your code that reaches the desired outcome. You may use old code of yours to accomplish this task as you see fit
+
+#YOU MAY NOT USE MORE THAN 35 LINES OF CODE. COMMENTS AND BLANK LINES DO NOT COUNT TOWARDS THIS REQUIRMENT
+#YOU MUST HAVE AT LEAST 1 COMMENT LINE FOR EVERY 4 LINES OF CODE
+
+
+import requests
+from PIL import Image
+from io import BytesIO
+
+#These are the libraries that we are importing
+def fetch_mars_rover(base_url, date_to_search, api_key):
+    url = base_url + date_to_search + api_key
+    print(url)
+    #This is a funciton that will get the api of the mars rover from NASA and it prints the url to the terminal
+    response = requests.get(url)
+    data = response.json()
+    return data
+# 1st broken API  &api_key=sYlxxqiOHE2YgKOxQg9xtXZ6b1pFGF458seVL8Zm
+# 2nd broken API  &api_key=alrwoUsAfDFs9NhHP9kiqT9s4fCVlGFXugldah53
+#https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-06-03&api_key=alrwoUsAfDFs9NhHP9kiqT9s4fCVlGFXugldah53
+#This will get the requests that we imported and transfer the data to json, which will pretty print it and we will return it to the terminal as "data"
+base_url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="
+api_key = "&api_key=alrwoUsAfDFs9NhHP9kiqT9s4fCVlGFXugldah53"
+date_to_search = "2015-06-03"
+mars_data = fetch_mars_rover(base_url, date_to_search, api_key)
+print(mars_data)
+#This splits the url into the base and the api key and fetches the data from the two pieces
+try:
+    print("Title:", mars_data['title'])
+    print("Date:", mars_data['date'])
+    print("Explanation:", mars_data['explanation'])
+    print("HD URL:", mars_data.get('hdurl', "Not available"))
+    print("URL:", mars_data['url'])
+    #The try except statement will search JSON for informaiton that we need
+    #We get the title, date, explanaiton, HD URL, and the URL
+    #They are all printed to the terminal
+    photo = mars_data["photos"][0]["img-src"]
+    response = requests.get(photo)
+    image = Image.open(BytesIO(response.content))
+    image.show()
+    #This will show the image that the api is apoart of
+except:
+    print("Error:", mars_data.get('msg', 'Unknown error'))
+    #This acts as a debug to show the user an error message if the api does not get an image
