@@ -1,0 +1,40 @@
+import random
+print("Welcome to the Magic 8-Ball")
+yess = False
+while yess == False:
+    print("Please ask a question")
+    user_question = input("--> ")
+    print("Is this your question?", user_question)
+    print("If yes, type yes")
+    user_response = input("--> ")
+
+    if user_response == "yes":
+        ran_num = random.randint(1,8)
+        if ran_num == 1:
+            print("Sources say yes")
+        elif ran_num == 2:
+            print("Sources say no")
+        elif ran_num == 3:
+            print("Sources cannot give an answer")
+        elif ran_num == 4:
+            print("Sources are leaning towards yes")
+        elif ran_num == 5:
+            print("Sources are leaning towards no")
+        elif ran_num == 6:
+            print("Sources would like you to ask again")
+        elif ran_num == 7:
+            print("Sources are fighting Daniel")
+        else:
+            print("Sources are hungry and cannot answer")
+    else:
+        print("Please type 'yes' ")
+
+    print("Would you like to try again? If so, type 1, if no, type something else")
+    user_redemption = input("-->")
+    if user_redemption == "1":
+        yess = False
+    else:
+        yess = True
+        print("Thanks for playing")
+
+
