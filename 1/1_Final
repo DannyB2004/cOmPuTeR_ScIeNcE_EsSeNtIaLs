@@ -1,7 +1,0 @@
-print("This app will help you find your ideal weight for your height!")
-height = float(input("Please type your height (in iches) and press enter "))
-if height > 0:
-    ideal_weight = ((22*(height**2))/703)
-    print("Since you are", height, "inches tall, your ideal weight is", round(ideal_weight,2), "pounds.")
-else:
-    print("Please enter your actual height.")
