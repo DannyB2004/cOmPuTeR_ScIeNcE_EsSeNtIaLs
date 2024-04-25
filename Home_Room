@@ -1,0 +1,103 @@
+#YO THIS IS THE HOMEROOM ROSTER PROGRAM
+#IT IS DESIGNED TO ALLOW A TEACHER TO:
+#1) See the students in homeroom
+#2) Add/remove students in homeroom
+#3) See basic information about students
+
+class Student:
+    def __init__(self, name, grade, ID, address, age, locker_number):
+        self.name = name
+        self.grade = grade
+        self.ID = ID
+        self.address = address
+        self.age = age
+        self.locker_number = locker_number
+homeroom = []
+def view_homeroom():
+    for student in homeroom:
+        print(student.name)
+def add_to_homeroom():
+    print("What is the name of the student")
+    name = input("-->")
+    print("What is the grade of the student")
+    grade = input("-->")
+    print("What is the ID of the student")
+    ID = input("-->")
+    print("What is the address of the student")
+    address = input("-->")
+    print("What is the age of the student")
+    age = input("-->")
+    print("What is the locker number of the student")
+    locker_number = input("-->")
+
+    new_student = Student(name, grade, ID, address, age, locker_number)
+    print("The new student's informaiton is below")
+    print("Name:", new_student.name)
+    print("Grade:", new_student.grade)
+    print("ID:", new_student.ID)
+    print("Address", new_student.address)
+    print("Age", new_student.age)
+    print("Locker_number", new_student.locker_number)
+    homeroom.append(new_student)
+def remove_from_homeroom():
+    pass
+def get_student_grade(name):
+    #student = input("-->")
+    for student in homeroom:
+        if student.name == name:
+            print(student.grade)
+def get_student_address(name):
+    for student in homeroom:
+        if student.name == name:
+            print(student.address)
+def get_student_ID(name):
+    for student in homeroom:
+        if student.name == name:
+            print(student.ID)
+def length_of_homeroom():
+    print(len(homeroom))
+def search_roster_for_student():
+    pass
+
+
+
+while True:
+    print("What would you like to do?")
+    print("1: View Homeroom")
+    print("2: Add student to homeroom")
+    print("3: Remove student from homeroom")
+    print("4: Get student grade")
+    print("5: Get student address")
+    print("6: Get student ID")
+    print("7: See amount of students in homeroom")
+    print("8: Search homeroom for student")
+    print("9: Exit program")
+    try:
+        choice = input("-->")
+        if choice == "1":
+            view_homeroom()
+        elif choice == "2":
+            add_to_homeroom()
+        elif choice == "3":
+            pass
+        elif choice == "4":
+            get_student_grade
+        elif choice == "5":
+            get_student_address
+        elif choice == "6":
+            get_student_ID
+        elif choice == "7":
+            length_of_homeroom()
+        elif choice == "8":
+            pass
+        elif choice == "9":
+            print("You are now exiting the program")
+            break
+        else:
+            print("Unexpetced error")
+            
+    except:
+        print("Unexpected error. Please try again")
+
+
+
