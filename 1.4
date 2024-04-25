@@ -1,0 +1,11 @@
+print("Welcome to The Grade Calculator. ", "This app will be able to determine if you are passing or failing a class based on your grade.")
+grade_max = input("Type how many points the assignment is worth and press enter ")
+grade_got = input("Type how many points you earned and press enter ")
+grade_max_num = int(grade_max)
+grade_got_num = int(grade_got)
+final_grade = grade_got_num / grade_max_num * 100
+
+if final_grade >= 60:
+  print("Your final grade is ", final_grade, " and you passed")
+else:
+  print("Your final grade is ", final_grade, " and you failed")
