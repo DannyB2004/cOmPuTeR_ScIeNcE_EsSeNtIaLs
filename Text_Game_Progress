@@ -1,0 +1,39 @@
+import random
+game = False
+while game == False:
+        print("Welcome to JigSaw. What is your name?")
+        user_name = input("-->")
+        print("Hello", user_name)
+        print("Would you like to play a game?")
+        user_play_choice = input("-->")
+        if user_play_choice == "No":
+            game = True
+            print("Most people are so ungrateful to be alive. You die...")
+            game_loss = True
+        else:
+            game = True
+            print("Welcome to hell.")
+            game_loss = False
+if game_loss == False:
+        print("There are ten doors infront of you that will decide your fate. What is your choice?")
+        
+if game_loss == True:
+        print('Would you like to try again?')
+        user_redemption = input("-->")
+        if user_redemption == "Yes":
+            print("Ok")
+            game == False
+            
+        else:
+            print("Thanks for playing...")
+            game == True
+    
+
+       
+        
+        
+        
+        
+
+
+
