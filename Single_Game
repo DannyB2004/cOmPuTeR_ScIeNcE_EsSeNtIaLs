@@ -1,0 +1,40 @@
+# Single Player Guessing Gamee
+# This game allows a player to guess a computer generated number
+
+# IMPORTS
+import random
+
+#VARIABLES
+answer = -1
+lives = 10
+user_guess = -1
+
+# Beginning of game
+print("Welcome to Single Player Guessing Game")
+print("Guess a number between 1 - 1000")
+answer = random.randint(1, 1000)
+
+
+while(lives > 0):
+    try:
+        user_guess = int(input("-> "))
+        print("You have guessed:",user_guess)
+
+        if answer == user_guess:
+            print("You win")
+            break
+        elif user_guess > answer:
+            print("Guess lower")
+            lives -= 1
+            print("You have", lives, "remaining")
+        elif user_guess < answer:
+            print("Guess higher")
+            lives -= 1
+            print("You have", lives, "remaining")
+        else:
+            print("An error has occured")
+    except:
+        print("An error has occured")
+
+print("Thank you for playing")
+print("The secret number was", answer)
