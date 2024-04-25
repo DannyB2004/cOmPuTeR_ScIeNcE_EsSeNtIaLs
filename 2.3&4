@@ -1,0 +1,101 @@
+#1st National Bank of Browntown Online Banking Application
+
+
+class Customer():
+    #This is an OBJECT. It has properties of Withdraw, Deposit, BalanceCheck
+    def __init__ (self, name, balance = 100.00):
+        self.name = name
+        self.balance = balance
+        #Prints "Account made for", while concatinating the name of the user stored in the varible name
+        #It also prints "Current Balance: $", while concatinating the amount of the users balance, which is stored in the variable balance
+        print("Account made for", name, " Current Balance: $", balance)
+
+    def withdraw(self, amount):
+    #A function responsible for withdrawing money from the users account
+        self.balance = self.balance - amount
+        #The users account will now subtract the amount that the user enters to withdraw
+        #EX. If the user has $500 in their account and they input 50, there new balance will be $450
+        return self.balance
+        #The new balance is returned to the terminal. The previous example would return $450
+    
+    def deposit(self, amount):
+    #A function responsible for deposting money to the users account
+        self.balance = self.balance + amount
+        #The users account will now add the amount that the user enters to deposit
+        #EX. If the user has $500 in their account and they input 50, there new balance will be $550
+        return self.balance
+        #The new balance is returned to the terminal. The previous example would return $550
+    def checkBalance(self, amount):
+    # A function that displays the balance that the user currently has
+        self.balance = self.balance + 0
+        #Allows the balance to be processed through the function since adding zero to a value will not change it
+        return self.balance
+        #The current balance is returned to the terminal
+    
+
+print("Welcome to the 1st National Bank of Browntown App")
+#Prints "Welcome to the 1st National Bank of Browntown App" to the terminal
+print("All new customers get $100 deposited into their account for signing up!")
+#Prints "All new customers get $100 deposited into their account for signing up!" to the terminal
+name = input("Let's Get Started! What is your name: ")
+#A variable called name will store the input of the user when they respons to "Let's Get Started! What is your name:  "
+#EX. If you enter "Justin", then the value of name will be "Justin"
+customer = Customer(name)
+#Stores the varibale name as the variable customer
+#EX. If name is "Justin", then customer's value is now "Justin"
+EndCheckout = False
+#Allows the while loop to take place. If "EndCheckout" would be true, the while loop would not take place
+while EndCheckout == False:
+#Since the user has not checked out yet, "EndCheckout" is false since the user has not checked out yet
+  print("What would you like to do: (1) Withdraw   (2) Deposit   (3) Check Balance   (4) Leave ")
+  #prints "What would you like to do: (1) Withdraw   (2) Deposit   (3) Check Balance   (4) Leave"
+  choice = input("->")
+  #Allows the user to pick a number from 1-4 from the previous print statement regarding what they want to do at the bank
+  #Whatever value they insert will have a different section in the if else statement below
+  if choice == "1":
+  #This will appear if the user picked "1"
+    print("How much are you withdrawing")
+    #prints "How much are you withdrawing" to the terminal
+    amount = float(input("->"))
+    #The user will enter how much money they want to withdraw. It will should be a number, and the float causes the number to have a decimal.
+    customer.withdraw(amount)
+    #Causes the amount withdrawn from the account to be subtracted from the balance
+    print("You have withdrawn ", amount)
+    #Prints "You have withdrawn", and the amount entered in the previous step (how much money is withdrawn) to the terminal
+    print("Your balance is", customer.balance, "dollars")
+    #Prints "Your balance is" and the balance after subtracting the withdraw, and "dollars"
+  elif choice == "2":
+  #If the user picks 2 (deposit) this will appear
+    print("How much are you depositing?")
+    #prints "How much are you depositing" to the terminal
+    amount = float(input("->"))
+    #Stores the users response to the input as the amount they want to deposit into their account
+    #The user will eneter a number that can be a decimal (due to the float addition)
+    customer.deposit(amount)
+    #Causes the amount variable to be added to the customer balance
+    print("You have deposited ", amount)
+    #Prints "You have deposited" and the amount variable from the previous step where the user entered how much they are depositing to the terminal
+    print("Your balance is", customer.balance, "dollars")
+    #Prints "Your balance is" and the new balance after adding the money being deposited, and "dollars" to the terminal
+  elif choice == "3":
+  #If the user enters 3 (check balance) this part of the if else statement will start
+    amount = 100
+    #At BrownTown Bank, the user starts with $100 in their account, so we set the amount they have equal to 100
+    customer.checkBalance(amount)
+    #Since we used this operaiton in the previous parts of the if else statement, it will carry its value to this step.
+    # EX. If we deposited 500 dollars and then checked our account, the customer balance will be $600 since the operation is saved
+    print("Your balance is", customer.balance, "dollars")
+    #prints "Your balance is" and concatinating the variable 'customer.balance' to represent the amount of money in the users checking account, and "dollars" to the terminal
+
+  elif choice == "4":
+  #If the user selects 4 (Leave the bank), this part of the if else statement will take place
+    EndCheckout = True
+    #Since the user is deciding to leave the bank, end checkout is now true, which prevents an infinite loop from occuring since the other three steps always restart to the inital input part of the code.
+   
+    print("Thanks for coming to the bank!")
+    #prints "Thanks for coming to the bank" to the terminal.
+  else: 
+    #Acts as a debug for the code. If a user would enter 5, this part of the if else statement would take place.
+    #If the user enters anything besides 1, 2, 3, or 4, this part of the if else statement will take place.
+    print("Please enter a valid command.")
+    #Prints "Please enter a valid command" to the terminal.
