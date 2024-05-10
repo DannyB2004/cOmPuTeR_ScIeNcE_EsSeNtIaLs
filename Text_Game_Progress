@@ -1,14 +1,16 @@
 import random
 game = False
 game_loss = False
+lives = 3
 def start_game():
-    game_loss = False
+    global game_loss 
+    global game
     while game_loss == False:
-            print("Welcome to JigSaw. What is your name?")
-            user_name = input("-->")
+            print("Welcome to .....Don't Answer Nothing If Endura Lurks..... What is your name?")
+            user_name = input("--> ")
             print("Hello", user_name)
-            print("Would you like to play a game?")
-            user_play_choice = input("-->")
+            print("Would you like to play a game? (Do not type 'No')")
+            user_play_choice = input("--> ")
             if user_play_choice == "No":
                 print("Most people are so ungrateful to be alive. You die...")
                 game_loss = True
@@ -21,8 +23,8 @@ def start_game():
 def second_chance():
     game_loss = True
     if game_loss == True:
-        print('Would you like to try again?')
-    user_redemption = input("-->")
+        print("Would you like to try again? (Type 'Yes')")
+    user_redemption = input("--> ")
     if user_redemption == "Yes":
         start_game()
     else:
@@ -33,12 +35,22 @@ def second_chance():
 
 def play_game():
     proceed = False
+    print("Choose a number from 1-10..")
+    onsie = False
+    while onsie == False:
+        one_through_ten = int(input("-->"))
+        round(one_through_ten)
+        if one_through_ten == 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 or 10:
+            print("Thank you")
+            break
+        else:
+            onsie = False
     print("You are locked in a chamber with a man. He is not awake, but you are. You are chained to the right side of the chamber, and the man is in the middle of the floor.")
     print("You look around and notice a ten-sided dice and ten items around the room.") 
     print("1. A bathtub   2. A flashlight   3. A bow-saw   4. A shotgun   5. A mirror   6. A door  7. A sink   8. A toilet   9. Another man who appears to be dead   10. A doll")
     while proceed == False:
         print("Are you ready to proceed?")
-        player_proceed = input("-->")
+        player_proceed = input("--> ")
         if player_proceed == "Yes":
             break
         else:
@@ -54,7 +66,7 @@ def player_proceeds():
     print(" 'You may know the man inside with you, but obviously he is not awake at the moment... .Do you value your life, the life of your competition, of both of your lives? The question will be answered...")
     print("'Grab the dice infront of you... roll it... and you will recieve your fate'")
     while roll == False:
-        dice_roll = input("type 'Roll' -->")
+        dice_roll = input("type 'Roll' --> ")
         if dice_roll == "Roll":
             print("good")
             break
@@ -62,9 +74,13 @@ def player_proceeds():
             roll = False
     player_proceeds_2()
 def player_proceeds_2():
+
     number = random.randint(1,10)
-    print(number)
-    if number == 1:
+    round(number)
+    global one_through_ten
+    if number == one_through_ten:
+        game_win()
+    elif number == 1:
         player_rolls_one()
     elif number == 2:
         player_rolls_two()
@@ -89,80 +105,161 @@ def player_rolls_one():
     print("You glance at the dice and it shows a one. The doll starts to talk in its raspy voice:")
     print("'Inside the bathtub is the key to your escape, but you cannot reach the bathtub because you are chained to the wall. There is a bow-saw within your reach. How much do you value your life...,'")
     print("'Type 'cut' if you choose to proceed, or type 'roll if you want another option'")
-    roll_choice = input("-->")
-    if roll_choice == "cut":
-        fate_one = random.rand_int(1,2)
-        if fate_one == 1:
-            pass
+    roll_one = False
+    while roll_one == False:
+        roll_choice = input("--> ")
+        if roll_choice == "cut":
+            fate_one = float(random.randint(1,2))
+            if fate_one == 1:
+                game_win()
+            else:
+                game_lose()
+        elif roll_choice == "roll":
+            player_proceeds_2()
+            roll_one == False
         else:
-            pass
-    elif roll_choice == "roll":
-        player_proceeds_2()
-    else:
-        "Please enter a valid option"
+            roll = False
 
 def player_rolls_two():
     print("You glance at the dice and it shows a two. You notice a flashlight in the corner. When you reach to grab it, the doll begins to speak.")
     print( "'I find it hypocritical that you wish to see the light, yet when your son, Daniel, did not have a chance to see the light of the world when you killed him'")
     print("You are scared... should you grab the light or leave it alone")
     print("Type 'grab' to grab and 'leave' to leave it")
-    grab_choice = input(" -->")
-    if grab_choice == "grab":
-      pass
-    elif grab_choice == "leave":
-      pass
-    else:
-      print("Please print a valid optinon.")
-
+    grabby = False
+    while grabby == False:
+        grab_choice = input("-->")
+        if grab_choice == "grab":
+            game_lose()
+        elif grab_choice == "leave":
+            game_win()
+        else:
+            grabby = False
 def player_rolls_three():
     print("You glance at the dice and it shows a three. The doll's voice echos: ")
     print("'You were a skilled surgeon. To your right is a bow-saw. Your right leg is chained to the wall. If you truly value your life, you must set yourself free from the chains.You may choose to cut your leg or think of another option'")
     print("Type 'yes' to cut or 'no' to think")
-    cut_choice = input("-->")
-    if cut_choice == "yes":
-      pass
-    elif cut_choice == "no":
-      pass
-    else:
-      print("Please print a valid option")
+    cutty = False
+    while cutty == False:
+        cut_choice = input("--> ")
+        if cut_choice == "yes":
+            game_win()
+        elif cut_choice == "no":
+            game_lose()
+        else:
+            cutty = False
+            
+      
 
 def player_rolls_four():
     print("You glance at the dice and it shows a four. A shotgun is within your reach to the left. You decide to grab it, but before you do, the doll begins to speak:")
     print("'There are two men in this room. You can shoot yourself, the man, or refuse to shoot.")
     print("Type 'you' to shoot yourself, 'man' to shoot the man, or 'inspect' if you refuse")
-    shoot_choice = input("-->")
-    if shoot_choice == "you":
-      pass
-    elif shoot_choice == "man":
-      pass
-    elif shoot_choice == "inspect":
-      pass
-    else:
-      print("Please enter a valid option")
+    shooty = False
+    while shooty == False:
+        shoot_choice = input("--> ")
+        if shoot_choice == "you":
+            game_win()
+        elif shoot_choice == "man":
+            game_lose()
+        elif shoot_choice == "inspect":
+            game_lose()
+        else:
+            shooty = False
 def player_rolls_five():
-    print("You glance at the dice and it shows a five. You look across the room to see a mirror. Your look like a shell of your former self. As you start to get emotional, the doll quietly says:")
+    print("You glance at the dice and it shows a five. You look across the room to see a mirror. You look like a shell of your former self. As you start to get emotional, the doll quietly says:")
     print("'You finally realize the turn your life has taken. You were a young, powerful, and accepted man. You had everything a man wanted. You could have lived the best life... what a shame...Roll the dice agin'")
     print("Type 'roll' to roll the dice")
-    user_roll_secret = input("-->")
-    
-    
+    sec = False
+    while sec == False:
+        user_roll_secret = input("--> ")
+        if user_roll_secret == "roll":
+            player_proceeds_2()
+        elif user_roll_secret == "no":
+            game_win()
+        else:
+            sec = False
 
 def player_rolls_six():
     print("You glance at the dice and it shows a six.")
+    print("The doll gets off of its chair and walks towards you. It sits just outside of your reach and asks you a question:")
+    print("Why do you think you are here?")
+
+    answer = input("--> ")
+    if answer == "Daniel":
+        game_win()
+    elif answer == "Bradley":
+        game_win()
+    elif answer == "Mazy":
+        game_win()
+    else:
+        game_lose()
 
 def player_rolls_seven():
     print("You glance at the dice and it shows a seven.")
-
+    print("You stand up, but you are unable to walk very far because your leg is chained to the ground. The doll just looks at you. You notice the sink behind you.")
+    print("You glance in the sink and nothing is there, but when you look for the doll again, the doll is in not there.")
+    print("Do you turn on the sink or wait for the doll to come back?")
+    sinkkkk = False
+    while sinkkkk == False:
+        sink_pick = input("Type 'On' for sink and 'Wait' for doll --> ")
+        if sink_pick == "On":
+            game_lose()
+        elif sink_pick == "Wait":
+            game_lose()
+        elif sink_pick() == "Kill":
+            game_win()
+        else:
+            sinkkkk = False
 def player_rolls_eight():
     print("You glance at the dice and it shows an eight.")
+    print("You notice a toilet from across the room. Nothing happens. While you wait for something to happen, your get bored. You decide to roll the dice again.")
+    bad_roll = input("Type 'Roll' to roll --> ")
+    if bad_roll == "Roll":
+        game_lose()
+    else:
+        game_win()
 
 def player_rolls_nine():
     print("You glance at the dice and it shows a nine.")
-
+    print("The doll speaks: 'You have nine minutes to find the name of the man infront of you.. or you lose")
+    print("You freak out and try to run, but you fall because you are chained to the wall, and you are knocked out. When you wake up, the man is gone. You look around the room and see a figure by the door.")
+    print("The figure speaks in a raspy voice: 'Seth... you are the most ungrateful human to be alive. I can't fathom a person so disgraceful to live. Say my name, or this will be the last place you ever see...")
+    his_name_guess = input("Type 'The name of the man' --> ")
+    if his_name_guess == "The name of the man":
+        game_win()
+    else:
+        game_lose()
 def player_rolls_ten():
     print("You glance at the dice and it shows a ten.")
+    print("The doll rides it bike towars you... How is it moving?!?")
+    print("It drops a note on the ground and you read it..")
+    print("You have a chance to leave this room. You have a 1 percent chance of winning if you decide to play.")
+    print("You can either play or quit...")
+    playboycardi = False
+    while playboycardi == False:
+        user_plays = input("Type 'Play' to play or 'Quit' to quit --> ")
+        if user_plays == "Play":
+            game_win()
+        elif user_plays == "Quit":
+            game_lose()
+        else:
+            playboycardi = False
 
-
+def game_win():
+    print("Congraugulations. You Won. Would you like to play again?")
+    play_again = input("Type 'Yes' to playa agin --> ")
+    if play_again == "Yes":
+        start_game()
+    else:
+        print("Thank you for playing..")
+def game_lose():
+    print("Welp... You lost")
+    print("Would you like to try again?")
+    play_again = input("Type 'Yes' to playa agin --> ")
+    if play_again == "Yes":
+        start_game()
+    else:
+        print("You will never win if you quit...")
 #The game starts here
 start_game()
 
