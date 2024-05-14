@@ -31,8 +31,6 @@ def second_chance():
         print("Thanks for playing...")
         game == True
     
-
-
 def play_game():
     proceed = False
     print("Choose a number from 1-10..")
