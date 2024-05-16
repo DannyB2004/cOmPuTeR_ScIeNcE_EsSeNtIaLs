@@ -1,6 +1,8 @@
+#gets library for random number to be implemented
 import random
 game = False
 game_loss = False
+#A function that will start the game by getting informaiton about the user and asking if they want to play
 def start_game():
     global game_loss 
     global game
@@ -19,6 +21,7 @@ def start_game():
                 print("Welcome to hell. Remeber... only those who value life should be the ones to experience it...")
                 play_game()
                 break
+#If the user does not want to play the game, this function will be called and it will ask them a second time. If they say no, the program closes.
 def second_chance():
     game_loss = True
     if game_loss == True:
@@ -29,10 +32,9 @@ def second_chance():
     else:
         print("Thanks for playing...")
         game == True
-    
+#This function will be called if the user wants to play the game, and it gives them informaiton about the game
 def play_game():
     proceed = False
-    print("Choose a number from 1-10..")
     print("You are locked in a chamber with a man. He is not awake, but you are. You are chained to the right side of the chamber, and the man is in the middle of the floor.")
     print("You look around and notice a ten-sided dice and ten items around the room.") 
     print("1. A bathtub   2. A flashlight   3. A bow-saw   4. A shotgun   5. A mirror   6. A door  7. A sink   8. A toilet   9. Another man who appears to be dead   10. A doll")
@@ -45,6 +47,7 @@ def play_game():
             proceed = False
     player_proceeds()
 
+#After the user says yes this function is called, and it starts the main portion of the game
 def player_proceeds():
     roll = False
     print("The doll plays a video recording of a man speaking. It says:")
