@@ -19,7 +19,7 @@ def start_game():
                 second_chance()
             else:
                 game_loss = False
-                print("Welcome to hell. Remeber... only those who value life should be the ones to experience it...")
+                print("Welcome to hell. Remember... only those who value life should be the ones to experience it...")
                 play_game()
                 break
 #If the user does not want to play the game, this function will be called and it will ask them a second time. If they say no, the program closes.
