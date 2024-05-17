@@ -56,6 +56,8 @@ def player_proceeds():
     print("You are a Father of a murdered son.... Husband to a missing wife!!!'")
     print(" 'You may know the man inside with you, but obviously he is not awake at the moment... .Do you value your life, the life of your competition, of both of your lives? The question will be answered...")
     print("'Grab the dice infront of you... roll it... and you will recieve your fate'")
+    #Until th user types roll, they will be stuck in the while loop
+    #When they type roll, they advance to the next part of the game
     while roll == False:
         dice_roll = input("type 'Roll' --> ")
         if dice_roll == "Roll":
@@ -64,9 +66,12 @@ def player_proceeds():
         else: 
             roll = False
     player_proceeds_2()
+#This function is called when the user types roll 
+#In the game, it is called when they roll the dice
 def player_proceeds_2():
-
+#A random number from 1-10 is picked, which will correspond to what the user rolls in the game when they roll the dice
     number = random.randint(1,10)
+#This will ensure that the number is a whole number
     round(number)
 
     if number == 1:
@@ -89,7 +94,7 @@ def player_proceeds_2():
         player_rolls_nine()
     elif number == 10:
         player_rolls_ten()
-
+#If the number rolled is one, this function is called
 def player_rolls_one():
     print("You glance at the dice and it shows a one. The doll starts to talk in its raspy voice:")
     print("'Inside the bathtub is the key to your escape, but you cannot reach the bathtub because you are chained to the wall. There is a bow-saw within your reach. How much do you value your life...,'")
@@ -97,6 +102,9 @@ def player_rolls_one():
     roll_one = False
     while roll_one == False:
         roll_choice = input("--> ")
+        #The user decides to cut off their arm, so they have a 50-50 chance of winning or losing the game (A random number from 1-2 will be picked to decide their fate)
+        #If they type roll, they go back to the beginning where they roll the ten-sided dice
+        #If they do not type cut or roll, they are stuck in the while loop
         if roll_choice == "cut":
             fate_one = float(random.randint(1,2))
             if fate_one == 1:
@@ -108,13 +116,14 @@ def player_rolls_one():
             roll_one == False
         else:
             roll = False
-
+#If the player rolls a two, this function is called
 def player_rolls_two():
     print("You glance at the dice and it shows a two. You notice a flashlight in the corner. When you reach to grab it, the doll begins to speak.")
     print( "'I find it hypocritical that you wish to see the light, yet when your son, Daniel, did not have a chance to see the light of the world when you killed him'")
     print("You are scared... should you grab the light or leave it alone")
     print("Type 'grab' to grab and 'leave' to leave it")
     grabby = False
+    #If the player grabs the flashlight, they lose the game, if they decide to not grab it, they win the game, but if they do not pick an option, they are stuck in the while loop until they pick a valid option
     while grabby == False:
         grab_choice = input("-->")
         if grab_choice == "grab":
@@ -123,11 +132,13 @@ def player_rolls_two():
             game_win()
         else:
             grabby = False
+#If the player rolls a three, this function is called
 def player_rolls_three():
     print("You glance at the dice and it shows a three. The doll's voice echos: ")
     print("'You were a skilled surgeon. To your right is a bow-saw. Your right leg is chained to the wall. If you truly value your life, you must set yourself free from the chains.You may choose to cut your leg or think of another option'")
     print("Type 'yes' to cut or 'no' to think")
     cutty = False
+    #If the user decides to cut off their leg, they win, if they do not, they lose, and if they do not enter a valid option, they are stuck in the while loop until they enter a valid option
     while cutty == False:
         cut_choice = input("--> ")
         if cut_choice == "yes":
@@ -136,14 +147,14 @@ def player_rolls_three():
             game_lose()
         else:
             cutty = False
-            
-      
 
+#If the player rolls a four, this function is called
 def player_rolls_four():
     print("You glance at the dice and it shows a four. A shotgun is within your reach to the left. You decide to grab it, but before you do, the doll begins to speak:")
     print("'There are two men in this room. You can shoot yourself, the man, or refuse to shoot.")
     print("Type 'you' to shoot yourself, 'man' to shoot the man, or 'inspect' if you refuse")
     shooty = False
+    #If the user decides to shoot themselves they win ("The gun is inverted, so it shoots backwards!!"), if they shoot the man they lose (They would shoot themselves since it is inverted and they would die), if they choose to inspect the gun, they lose, and if they do not enter a valid option, they will be stuck in the while loop until they enter a valid option
     while shooty == False:
         shoot_choice = input("--> ")
         if shoot_choice == "you":
@@ -154,11 +165,14 @@ def player_rolls_four():
             game_lose()
         else:
             shooty = False
+
+#If the player rolls a five, this function is called
 def player_rolls_five():
     print("You glance at the dice and it shows a five. You look across the room to see a mirror. You look like a shell of your former self. As you start to get emotional, the doll quietly says:")
     print("'You finally realize the turn your life has taken. You were a young, powerful, and accepted man. You had everything a man wanted. You could have lived the best life... what a shame...Roll the dice agin'")
     print("Type 'roll' to roll the dice")
     sec = False
+    #If the player rolls the dice, they will roll the tensided dice again and they will start another scenerio from the nummbers 1-10. If they type no, they win the game, but since there is no indication to typing no, it is a hidden way to win, and if they do not enter a valid response, they will be stuck in the while loop until a valid response is entered
     while sec == False:
         user_roll_secret = input("--> ")
         if user_roll_secret == "roll":
@@ -168,11 +182,12 @@ def player_rolls_five():
         else:
             sec = False
 
+#If the player rolls a six, this function is called
 def player_rolls_six():
     print("You glance at the dice and it shows a six.")
     print("The doll gets off of its chair and walks towards you. It sits just outside of your reach and asks you a question:")
     print("Why do you think you are here?")
-
+#The only way to win the game from this scenerio is to secretley give an answer that is given throughout each scenerio of the game. Entering Daniel, Bubby, or Mazy will automatically win them the game, but if they enter anything else, they lose the game. 
     answer = input("--> ")
     if answer == "Daniel":
         game_win()
@@ -183,12 +198,14 @@ def player_rolls_six():
     else:
         game_lose()
 
+#If the player rolls a seven, this function is called
 def player_rolls_seven():
     print("You glance at the dice and it shows a seven.")
     print("You stand up, but you are unable to walk very far because your leg is chained to the ground. The doll just looks at you. You notice the sink behind you.")
     print("You glance in the sink and nothing is there, but when you look for the doll again, the doll is in not there.")
     print("Do you turn on the sink or wait for the doll to come back?")
     sinkkkk = False
+    #If the player turns on the sink, they lose. If the player waits for the doll, they lose. If the player enters the kill option, which is a secret way to win, they win the game. If they enter any other response, they will be stuck in the while loop until a valid response is entered. 
     while sinkkkk == False:
         sink_pick = input("Type 'On' for sink and 'Wait' for doll --> ")
         if sink_pick == "On":
@@ -199,31 +216,41 @@ def player_rolls_seven():
             game_win()
         else:
             sinkkkk = False
+
+#If the player rolls an eight, this function is called.
 def player_rolls_eight():
     print("You glance at the dice and it shows an eight.")
     print("You notice a toilet from across the room. Nothing happens. While you wait for something to happen, your get bored. You decide to roll the dice again.")
+    #If the player chooses to roll the dice, they lose. If the player enters anything besides rolling the dice, they win the game. 
     bad_roll = input("Type 'Roll' to roll --> ")
     if bad_roll == "Roll":
         game_lose()
     else:
         game_win()
 
+#If the player rolls a nine, this function is called
 def player_rolls_nine():
     print("You glance at the dice and it shows a nine.")
     print("The doll speaks: 'You have nine minutes to find the name of the man infront of you.. or you lose")
     print("You freak out and try to run, but you fall because you are chained to the wall, and you are knocked out. When you wake up, the man is gone. You look around the room and see a figure by the door.")
     print("The figure speaks in a raspy voice: 'Seth... you are the most ungrateful human to be alive. I can't fathom a person so disgraceful to live. Say my name, or this will be the last place you ever see...")
+    
+    #If the user types The name of the man, they win the game. Any other response results in them losing the game. 
     his_name_guess = input("Type 'The name of the man' --> ")
     if his_name_guess == "The name of the man":
         game_win()
     else:
         game_lose()
+
+#If the player rolls a ten, this funciton is called.
 def player_rolls_ten():
     print("You glance at the dice and it shows a ten.")
     print("The doll rides it bike towars you... How is it moving?!?")
     print("It drops a note on the ground and you read it..")
     print("You have a chance to leave this room. You have a 1 percent chance of winning if you decide to play.")
     print("You can either play or quit...")
+    
+    #If the player decides to play the game, they win. If the player decides to not play the game, they lose. If the player enters a response that is not valid, they will be stuck in the while loop until a valid response is entered.
     playboycardi = False
     while playboycardi == False:
         user_plays = input("Type 'Play' to play or 'Quit' to quit --> ")
@@ -234,6 +261,7 @@ def player_rolls_ten():
         else:
             playboycardi = False
 
+#If the player wins the game, this function is called, and it gives the player the chance to play the game again, or exit the game. 
 def game_win():
     print("Congraugulations. You Won. Would you like to play again?")
     play_again = input("Type 'Yes' to playa agin --> ")
@@ -241,6 +269,8 @@ def game_win():
         start_game()
     else:
         print("Thank you for playing..")
+
+#If the player loses the game, this function is called. It gives them the chance to play the game again or to exit the program. 
 def game_lose():
     print("Welp... You lost")
     print("Would you like to try again?")
@@ -257,6 +287,3 @@ start_game()
         
         
         
-
-
-
