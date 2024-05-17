@@ -29,7 +29,7 @@ def second_chance():
         print("Would you like to try again? (Type 'Yes')")
     user_redemption = input("--> ")
     if user_redemption == "Yes":
-        start_game()
+        play_game()
     else:
         print("Thanks for playing...")
         game == True
@@ -107,7 +107,7 @@ def player_rolls_one():
         #If they type roll, they go back to the beginning where they roll the ten-sided dice
         #If they do not type cut or roll, they are stuck in the while loop
         if roll_choice == "cut":
-            fate_one = float(random.randint(1,2))
+            fate_one = round(float(random.randint(1,2)))
             if fate_one == 1:
                 game_win()
             else:
@@ -277,7 +277,7 @@ def game_lose():
     print("Would you like to try again?")
     play_again = input("Type 'Yes' to playa again --> ")
     if play_again == "Yes":
-        start_game()
+        play_game()
     else:
         print("You will never win if you quit...")
 
