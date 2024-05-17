@@ -2,6 +2,7 @@
 import random
 game = False
 game_loss = False
+game_numbers = []
 #A function that will start the game by getting informaiton about the user and asking if they want to play
 def start_game():
     global game_loss 
@@ -73,7 +74,7 @@ def player_proceeds_2():
     number = random.randint(1,10)
 #This will ensure that the number is a whole number
     round(number)
-
+    game_numbers.append(number)
     if number == 1:
         player_rolls_one()
     elif number == 2:
@@ -261,12 +262,12 @@ def player_rolls_ten():
         else:
             playboycardi = False
 
-#If the player wins the game, this function is called, and it gives the player the chance to play the game again, or exit the game. 
+#If the player wins the game, this function is called, and it gives the player the chance to check their scenerio history, or exit the game. 
 def game_win():
-    print("Congraugulations. You Won. Would you like to play again?")
-    play_again = input("Type 'Yes' to playa agin --> ")
+    print("Congraugulations. You Won. Would you like to see your scenerio history?")
+    play_again = input("Type 'Yes' to check your history --> ")
     if play_again == "Yes":
-        start_game()
+        win_history()
     else:
         print("Thank you for playing..")
 
@@ -274,11 +275,27 @@ def game_win():
 def game_lose():
     print("Welp... You lost")
     print("Would you like to try again?")
-    play_again = input("Type 'Yes' to playa agin --> ")
+    play_again = input("Type 'Yes' to playa again --> ")
     if play_again == "Yes":
         start_game()
     else:
         print("You will never win if you quit...")
+
+#This function shows the users scenerio history, and it gives them a chance to play the game again,or to exit the program. 
+def win_history():
+  print(game_numbers)
+  print("Congraugulations. You Won. Would you like to play again?")
+  play_againz = input("Type 'Yes' to play again or 'Clear' to play again and clear your scenerio history --> ")
+  if play_againz == "Yes":
+        start_game()
+  elif play_againz == "Clear":
+        game_numbers.clear()
+        print("History was cleared")
+        start_game()
+  else:
+        print("Thank you for playing..")
+
+
 #The game starts here
 start_game()
 
